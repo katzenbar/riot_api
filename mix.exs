@@ -13,8 +13,11 @@ defmodule RiotApi.Mixfile do
   def application do
     [applications: [:logger]]
   end
-  
+
   defp deps do
-    []
+    [
+      { :earmark, ">= 0.0.0", only: :dev },
+      { :ex_doc, ">= 0.0.0", only: :dev }
+    ]
   end
 end
