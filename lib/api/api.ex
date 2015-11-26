@@ -1,6 +1,26 @@
 defmodule Riot.Api do
   require Riot.Lol.Models.Region
   alias Riot.Lol.Models.Region, as: Region
+
+  @doc """
+  Returns the list of versions available through the API for a given region.
+
+  ## Examples
+
+      iex> Riot.Api.summoner_by_name("katzenbar", :na)
+      {:ok, %{ :id => 19868115, :name => "katzenbar", :profile_icon_id => 907, :revision_date => 1448479853000, :summoner_level => 30 }}
+
+      iex> Riot.Api.summoner_by_name("katzenbar", :not_a_valid_region)
+      {:error, :invalid_region}
+
+  ## Reference
+
+  https://developer.riotgames.com/api/methods#!/1055/3630
+  """
+  @spec summoner_by_name(String.t, Atom.t) :: {:ok, Map.t} | {:error, Atom.t}
+  def summoner_by_name(name, region) when region in Region.keys, do: api_class.summoner_by_name(name, region)
+  def summoner_by_name(_name, _region), do: { :error, :invalid_region }
+
   @doc """
   Returns the list of versions available through the API for a given region.
 
