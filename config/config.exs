@@ -1,3 +1,6 @@
 use Mix.Config
 
-import_config "#{Mix.env}_private.exs"
+
+if File.exists?("#{Mix.env}_private.exs") do
+  import_config "#{Mix.env}_private.exs"
+end
