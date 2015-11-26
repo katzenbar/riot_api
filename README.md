@@ -1,5 +1,7 @@
 # Riot Api
 
+[![Build Status](https://travis-ci.org/ktornwall/riot_api.svg?branch=master)](https://travis-ci.org/ktornwall/riot_api)
+
 Elixir library to provide an easy to use interface for [Riot Games's Api](https://developer.riotgames.com/).
 
 ## Installation
