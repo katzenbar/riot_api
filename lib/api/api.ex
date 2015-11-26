@@ -1,7 +1,16 @@
 defmodule Riot.Api do
   @regions [
     :br,
+    :eune,
+    :euw,
+    :kr,
+    :lan,
+    :las,
     :na,
+    :oce,
+    :pbe,
+    :ru,
+    :tr,
   ]
 
   @doc """
@@ -17,6 +26,10 @@ defmodule Riot.Api do
 
       iex> Riot.Api.versions(:not_a_valid_region)
       {:error, :invalid_region}
+
+  ## Reference
+
+  https://developer.riotgames.com/api/methods#!/1055/3630
   """
   @spec versions(Atom.t) :: {:ok, List.t} | {:error, Atom.t}
   def versions(region) when region in @regions, do: api_class.versions(region)

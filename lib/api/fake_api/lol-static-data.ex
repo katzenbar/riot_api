@@ -1,4 +1,6 @@
 defmodule Riot.Api.FakeApi.LolStaticData do
+  @moduledoc false
+
   def versions(:na), do: { :ok, na_version_list }
   def versions(:br), do: { :ok, br_version_list }
 
