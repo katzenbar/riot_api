@@ -1,18 +1,6 @@
 defmodule Riot.Api do
-  @regions [
-    :br,
-    :eune,
-    :euw,
-    :kr,
-    :lan,
-    :las,
-    :na,
-    :oce,
-    :pbe,
-    :ru,
-    :tr,
-  ]
-
+  require Riot.Lol.Models.Region
+  alias Riot.Lol.Models.Region, as: Region
   @doc """
   Returns the list of versions available through the API for a given region.
 
@@ -32,7 +20,7 @@ defmodule Riot.Api do
   https://developer.riotgames.com/api/methods#!/1055/3630
   """
   @spec versions(Atom.t) :: {:ok, List.t} | {:error, Atom.t}
-  def versions(region) when region in @regions, do: api_class.versions(region)
+  def versions(region) when region in Region.keys, do: api_class.versions(region)
   def versions(_region), do: { :error, :invalid_region }
 
   defp api_class do
